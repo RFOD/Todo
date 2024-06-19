@@ -762,3 +762,11 @@ video {
 .text-\[\#FFFFFF95\] {
   color: #FFFFFF95;
 }
+
+.hover\:bg-\[\#00000020\]:hover {
+  background-color: #00000020;
+}
+
+.hover\:bg-\[\#00000030\]:hover {
+  background-color: #00000030;
+}
