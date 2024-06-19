@@ -554,6 +554,38 @@ video {
   --tw-contain-style:  ;
 }
 
+.relative {
+  position: relative;
+}
+
+.right-12 {
+  right: 3rem;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
+.right-8 {
+  right: 2rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -568,6 +600,18 @@ video {
 
 .mr-6 {
   margin-right: 1.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .flex {
@@ -590,6 +634,30 @@ video {
   height: 8vh;
 }
 
+.h-\[\] {
+  height: ;
+}
+
+.h-\[3rem\] {
+  height: 3rem;
+}
+
+.h-\[2rem\] {
+  height: 2rem;
+}
+
+.h-\[1rem\] {
+  height: 1rem;
+}
+
+.h-\[1\.5rem\] {
+  height: 1.5rem;
+}
+
+.h-\[1\.7rem\] {
+  height: 1.7rem;
+}
+
 .min-h-\[85vh\] {
   min-height: 85vh;
 }
@@ -608,6 +676,30 @@ video {
 
 .w-\[100vw\] {
   width: 100vw;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[3rem\] {
+  width: 3rem;
+}
+
+.w-\[2rem\] {
+  width: 2rem;
+}
+
+.w-\[1rem\] {
+  width: 1rem;
+}
+
+.w-\[1\.5rem\] {
+  width: 1.5rem;
+}
+
+.w-\[1\.7rem\] {
+  width: 1.7rem;
 }
 
 .grid-cols-\[35vw_65vw\] {
@@ -648,6 +740,18 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-\[50\%\] {
+  border-radius: 50%;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .bg-\[\#00000020\] {
