@@ -754,6 +754,15 @@ video {
   border-width: 2px;
 }
 
+.border {
+  border-width: 1px;
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-\[\#00000020\] {
   background-color: #00000020;
 }
@@ -855,6 +864,35 @@ body{
 
 .hover\:bg-\[\#00000030\]:hover {
   background-color: #00000030;
+}
+
+.hover\:bg-\[\]:hover {
+  background-color: ;
+}
+
+.hover\:bg-\[\#\]:hover {
+  background-color: #;
+}
+
+.hover\:bg-\[\#00000020\]:hover {
+  background-color: #00000020;
+}
+
+.hover\:bg-\[\#00000050\]:hover {
+  background-color: #00000050;
+}
+
+.hover\:bg-\[\#FFFFFF\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[\#FFFFFF40\]:hover {
+  background-color: #FFFFFF40;
+}
+
+.hover\:bg-\[\#FFFFFF30\]:hover {
+  background-color: #FFFFFF30;
 }
 
 .hover\:opacity-80:hover {
