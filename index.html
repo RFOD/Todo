@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/output.css">
+    <script src="index.js" defer></script>
     <title>To-Do List</title>
 </head>
 <body class="bg-[#006989] flex items-center flex-col">
@@ -26,7 +27,7 @@
                 <h2 class="font-semibold text-white text-lg" data-title>Web-dev Project</h2>
             </div>
         </div>
-        <div class="font-bold text-[2rem] text-white p-5 px-10 ">
+        <div class="font-bold text-[2rem] text-white p-5 px-10 flex flex-col">
             <div class="flex gap-2 items-center">
                 <h1 class="mb-6 mr-6">Tasks</h1>
                 <div class="mb-6 w-24 h-8 bg-green-600 rounded-md text-lg flex justify-center items-center hover:opacity-80">Add Task</div>
@@ -34,8 +35,26 @@
             </div>
             <div data-index class="flex flex-col justify-center bg-[#00000020] p-2 rounded-lg mb-2 hover:bg-[#00000030]">
                 <div class="flex">
-                    <div class="w-[1.7rem] h-[1.7rem] border-2 border-white rounded-[50%] relative right-2 ml-4 hover:bg-[#FFFFFF30]"></div>
+                    <div data-checkbox class="w-[1.7rem] h-[1.7rem] border-2 border-white rounded-[50%] relative right-2 ml-4 "></div>
                     <h2 class="font-semibold text-white text-lg" data-title>Create page using tailwind Css</h2>
+                </div>
+                <p class="text-sm font-thin m-2 mt-4 hidden">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio soluta ipsa dolores non placeat tempora porro nobis. Possimus, reprehenderit nobis hic, eveniet accusantium tempore corporis minus eum voluptatum perferendis recusandae?
+                </p>
+            </div>
+            <div data-index class="flex flex-col justify-center bg-[#00000020] p-2 rounded-lg mb-2 hover:bg-[#00000030]">
+                <div class="flex">
+                    <div data-checkbox class="w-[1.7rem] h-[1.7rem] border-2 border-white rounded-[50%] relative right-2 ml-4 "></div>
+                    <h2 class="font-semibold text-white text-lg" data-title>Halburg my hamburg on your lapbug</h2>
+                </div>
+                <p class="text-sm font-thin m-2 mt-4 hidden">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio soluta ipsa dolores non placeat tempora porro nobis. Possimus, reprehenderit nobis hic, eveniet accusantium tempore corporis minus eum voluptatum perferendis recusandae?
+                </p>
+            </div>
+            <div data-index class="flex flex-col justify-center bg-[#00000020] p-2 rounded-lg mb-2 hover:bg-[#00000030]">
+                <div class="flex">
+                    <div data-checkbox class="w-[1.7rem] h-[1.7rem] border-2 border-white rounded-[50%] relative right-2 ml-4 "></div>
+                    <h2 class="font-semibold text-white text-lg" data-title>Tailwind Css</h2>
                 </div>
                 <p class="text-sm font-thin m-2 mt-4 hidden">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio soluta ipsa dolores non placeat tempora porro nobis. Possimus, reprehenderit nobis hic, eveniet accusantium tempore corporis minus eum voluptatum perferendis recusandae?
