@@ -1,4 +1,4 @@
-let orderCounter = 0
+// Checkbox Fill Logic
 let checkboxes = document.querySelectorAll('[data-checkbox]')
 checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('click',() => toggleCheckboxStatus(checkbox))
@@ -13,5 +13,4 @@ function toggleCheckboxStatus(checkbox)
         }
     checkbox.classList.toggle('bg-white')
     checkbox.closest('[data-index]').classList.add(`order-last`)
-
 }
