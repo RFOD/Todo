@@ -28,6 +28,7 @@ function addProject()
     let title = ''
     createProjectForm(projectIndex ,title)
     projectIndex++
+    
 }
 function createProject(projectIndex, title)
 {
@@ -58,14 +59,15 @@ function createProject(projectIndex, title)
     removeBtns.forEach((button) => {
     button.addEventListener('click', () => removeProject(event))
     })
+    console.log(projects)
 }
 function removeProject(event)
 {
     
     const container = event.target.closest('[data-index]')
     projects.splice(container.dataset.index, 1)
+    if(projectIndex !== 0)  {projectIndex--}
     projectSection.removeChild(container)
-    projectIndex--
     console.log(projects)
 }
 
