@@ -16,7 +16,8 @@ function toggleCheckboxStatus(checkbox)
     checkbox.classList.toggle('bg-white')
     checkbox.closest('[data-index]').classList.add(`order-last`)
 }
-// Create and Delete Project
+
+// Project functionality 
 const addBtn = document.querySelector('[data-add-project]')
 const projectFormSection = document.querySelector('[data-form-project-section]')
 const projectSection = document.querySelector('[data-project-section]')
@@ -120,4 +121,20 @@ function createProjectForm(index ,title)
             input.placeholder = 'ENTER TITLE!'
         }
     })
+}
+
+// Task Functionality 
+
+let tasks = document.querySelectorAll('[data-task]')
+tasks.forEach((task) => task.addEventListener('click',() => toggleDescription(event)))
+
+function toggleDescription(event)
+{
+    const button = event.target.closest('[data-button-desc]')
+    if(button)
+        {
+            const description = button.nextSibling.nextSibling
+            description.classList.toggle('hidden')
+        }
+
 }
