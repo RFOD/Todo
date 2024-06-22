@@ -3,18 +3,18 @@ export class Project
     constructor(title)
     {
         this.title = title
-        this.Tasks = []
+        this.tasks = []
     }
-    addToDoItem(task)
+    addTask(task)
     {
-        this.Tasks.push(task)
+        this.tasks.push(task)
     }
-    removeToDoItem(task)
+    removeTask(task)
     {
         const index = this.Tasks.indexOf(task)
         if(index !== -1)
             {
-                this.Tasks.splice(index, 1)
+                this.tasks.splice(index, 1)
             }
     }
 }
@@ -27,7 +27,7 @@ export class Task
         this.index = index
         this.description = ''
     }
-    addDescription(description)
+    addDesc(description)
     {
         this.description = description
     }
