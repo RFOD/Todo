@@ -138,3 +138,16 @@ function toggleDescription(event)
         }
 
 }
+// TO-DO for tomorrow!
+// 
+// 0.0 Create a funciton to switch between project tasks lists and every times it switches it updated the tasks part of DOM
+// 1.0 Add task/ Delete task funtionality!
+// 1.1 Create function to take care of creation of the form for the tasks
+// 1.2 Create function to store data from the Form to the object Task
+// 1.3 Create function to add the task to the DOM 
+// 1.4 Create funtion to delete task from DOM
+// 1.5 Create funtion to delete task from task list of the project 
+// 2.0 Storage Functionality!
+// 2.1 Store the projects with their corresponding tasks in a .json file ig?
+// 2.2 Check every time the browser loads if there are any files containing 
+// projects, and if so display them with their corresponding tasks
