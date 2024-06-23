@@ -139,7 +139,6 @@ function toggleDescription(event)
 
 }
 // TO-DO for tomorrow!
-// 
 // 0.0 Create a funciton to switch between project tasks lists and every times it switches it updated the tasks part of DOM
 // 1.0 Add task/ Delete task funtionality!
 // 1.1 Create function to take care of creation of the form for the tasks
