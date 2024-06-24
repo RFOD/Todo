@@ -134,10 +134,25 @@ function toggleDescription(event)
     if(button)
         {
             const description = button.nextSibling.nextSibling
-            description.classList.toggle('hidden')
+            const deleteBtn = description.nextSibling.nextSibling
+            if(deleteBtn && description)
+            {
+                description.classList.toggle('hidden')
+                deleteBtn.classList.toggle('hidden')
+            }
         }
 
 }
+function addTask()
+{
+    
+}
+// Tab Funcitonality
+
+
+
+
+
 // TO-DO for tomorrow!
 // 0.0 Create a funciton to switch between project tasks lists and every times it switches it updated the tasks part of DOM
 // 1.0 Add task/ Delete task funtionality!
