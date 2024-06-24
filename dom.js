@@ -124,10 +124,11 @@ function createProjectForm(index ,title)
 }
 
 // Task Functionality 
-
+const taskFormSection = document.querySelector('[data-task-form-section]')
 let tasks = document.querySelectorAll('[data-task]')
 tasks.forEach((task) => task.addEventListener('click',() => toggleDescription(event)))
-
+const addTaskButton = document.querySelector('[data-task-add]')
+addTaskButton.addEventListener('click', () => createTask())
 function toggleDescription(event)
 {
     const button = event.target.closest('[data-button-desc]')
@@ -143,9 +144,62 @@ function toggleDescription(event)
         }
 
 }
-function addTask()
+function createTask()
 {
+    let taskTitle = ''
+    let taskDesc = ''
+    taskForm(taskTitle, taskDesc)
+}
+function taskForm(taskTitle, taskDesc)
+{
+
+    if(document.querySelector('[data-form]') !== null){return}
+    const containerClasses =['flex', 'justify-center', 'bg-[#00000020]', 'p-2', 'rounded-lg', 'mb-2']
+    const formClasses =['flex', 'justify-center', 'items-center', 'flex-col', 'w-[100%]']
+    const textClasses =['font-bold', 'opacity-85', 'text-white', 'text-center', 'text-[80%]', 'mb-2']
+    const inputClasses =['px-2', 'rounded-md', 'border-[3px]', 'border-[#00698998]', 'text-xl', 'shadow-lg', 'w-[45%]','h-8', 'mb-2', 'focus:outline-none']
+    const submitClasses =['bg-[#00000040]', 'hover:bg-[#00000070]', 'duration-200', 'text-white', 'text-2xl', 'font-bold', 'py-1', 'px-3','w-32', 'h-12', 'rounded', 'shadow-lg']
+
+    let container = document.createElement('div')
+    let form = document.createElement('form')
+    let text = document.createElement('p')
+    let input = document.createElement('input')
+    let submit = document.createElement('button')
     
+    containerClasses.forEach((clasa) => container.classList.add(clasa))
+    container.setAttribute('data-form', '')
+    formClasses.forEach((clasa) => form.classList.add(clasa))
+    textClasses.forEach((clasa) => text.classList.add(clasa))
+    inputClasses.forEach((clasa) => input.classList.add(clasa))
+    submitClasses.forEach((clasa) => submit.classList.add(clasa))
+    
+    
+    text.innerText = "Add a Task to Your Project!"
+    input.placeholder = "Enter Title"
+    submit.innerText = "Create"
+    
+    taskFormSection.appendChild(container)
+    container.appendChild(form)
+    form.appendChild(text)
+    form.appendChild(input)
+    form.appendChild(submit)
+    
+    submit.addEventListener('click', (event) => {
+        event.preventDefault()
+        title = input.value
+        if(title)
+        {
+            let project = new Project(title)
+            projects.push(project)
+            console.log(project)
+            input.value = ''
+            projectFormSection.removeChild(container)
+            createProject(index, title)
+        }
+        else{
+            input.placeholder = 'ENTER TITLE!'
+        }
+    })
 }
 // Tab Funcitonality
 

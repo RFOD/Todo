@@ -20,7 +20,7 @@
         <div class="font-bold bg-[#00000040] p-5 ">
             <div class="flex text-white gap-2 items-center justify-between mb-2" >
                 <h1 class="text-blue text-[2rem] text-white">Projects</h1>  
-                <div data-add-project class="duration-100 mr-2 w-36 h-10 bg-green-600 rounded-md text-lg flex justify-center items-center hover:opacity-80">Add Project</div>
+                <div data-add-project class="duration-100 mr-2 w-36 h-10 bg-green-600 rounded-md text-xl flex justify-center items-center hover:opacity-80">Add Project</div>
             </div>
             <hr class=" mb-6">
             <div data-form-project-section>
@@ -31,11 +31,12 @@
         <div class="font-bold text-[2rem] text-white p-5 px-10 flex flex-col">
             <div class="flex gap-2 items-center mb-2">
                 <h1 class="mr-6">Tasks</h1>
-                <div class="duration-100 w-32 h-10 bg-green-600 rounded-md text-lg flex justify-center items-center hover:opacity-80">Add Task</div>
+                <div data-task-add class="duration-100 w-32 h-10 bg-green-600 rounded-md text-xl flex justify-center items-center hover:opacity-80">Add Task</div>
             </div>
             <hr class="mb-6">
-            <div data-index class="duration-200 shadow-md flex flex-col justify-center bg-[#00000020] p-2 rounded-lg mb-2 ">
-                <div data-task class="grid grid-cols-[10%_80%_10%]">
+            <div data-task-form-section></div>
+            <section data-task-section>
+                <div data-index data-task class="duration-200 shadow-md grid grid-cols-[10%_80%_10%] bg-[#00000020] p-2 rounded-lg mb-2 ">
                     <div data-checkbox class="w-[1.7rem] h-[1.7rem] mt-2 border-2 border-white rounded-[50%] relative right-2 ml-4 "></div>
                     <h2 class="font-semibold text-white text-xl mt-2" data-title>Create page using tailwind Css</h2>
                     <img data-button-desc alt="arrow down" src="src/Images/arrow_down.webp" class="w-[2.5rem] h-[2.8rem] pt-[4px] rounded-[50%] relative right-2 ml-4 hover:shadow-lg hover:opacity-20">
@@ -43,8 +44,8 @@
                         Optio ipsa dolores non placeat tempora porro nobis. Possimus, reprehenerit nobis hic, eveniet accusantium tempore corporis minus eum voluptatum perferendis recusandae?
                     </div>
                     <div data-delete-task class="hidden col-start-3 duration-100 w-24 relative right-[100%] h-8 bg-red-700 rounded-md text-lg flex justify-center items-center hover:opacity-80">Delete</div>
-            </div>
-        </div>
+                </div>
+            </section>
     </section>
     <div class="p-5 w-[100vw] h-[9vh] bg-[#00000060] flex items-center justify-center text-white text-[3rem] font-bold font-[Caveat]"> Made by RFOD</div>
 </body>
