@@ -155,14 +155,19 @@ function taskForm(taskTitle, taskDesc)
 
     if(document.querySelector('[data-form]') !== null){return}
     const containerClasses =['flex', 'justify-center', 'bg-[#00000020]', 'p-2', 'rounded-lg', 'mb-2']
-    const formClasses =['flex', 'justify-center', 'items-center', 'flex-col', 'w-[100%]']
-    const textClasses =['font-bold', 'opacity-85', 'text-white', 'text-center', 'text-[80%]', 'mb-2']
-    const inputClasses =['px-2', 'rounded-md', 'border-[3px]', 'border-[#00698998]', 'text-xl', 'shadow-lg', 'w-[45%]','h-8', 'mb-2', 'focus:outline-none']
-    const submitClasses =['bg-[#00000040]', 'hover:bg-[#00000070]', 'duration-200', 'text-white', 'text-2xl', 'font-bold', 'py-1', 'px-3','w-32', 'h-12', 'rounded', 'shadow-lg']
+    const formClasses =['grid','gap-4', 'xl:grid-cols-[300px_75%]','md:grid-cols-[250px_60%]', 'w-[100%]']
+    const textClasses =['font-bold', 'opacity-85', 'text-white', 'text-center', 'text-[80%]', 'mb-2', 'col-span-2']
+    const textREQClasses =['lg:left-20','relative','font-semibold', 'opacity-85', 'text-white', 'text-center', 'text-xl']
+    const inputDescClasses =['px-2','w-[80%]','row-span-2','text-black','h-[120px]','resize-none', 'rounded-md', 'border-[3px]', 'border-[#00698998]', 'text-xl', 'shadow-lg', 'w-[45%]', 'mb-2', 'focus:outline-none']
+    const inputClasses =['px-2','rounded-md','text-black', 'border-[3px]', 'border-[#00698998]', 'text-xl', 'shadow-lg', 'w-[80%]','h-8', 'mb-2', 'focus:outline-none']
+    const submitClasses =['lg:left-[50%]','relative','bg-[#00000040]', 'hover:bg-[#00000070]', 'duration-200', 'text-white', 'text-2xl', 'font-bold', 'px-3','w-32', 'h-12', 'rounded', 'shadow-lg']
 
     let container = document.createElement('div')
     let form = document.createElement('form')
     let text = document.createElement('p')
+    let titleText = document.createElement('p')
+    let descText = document.createElement('p')
+    let inputDesc = document.createElement('textarea')
     let input = document.createElement('input')
     let submit = document.createElement('button')
     
@@ -170,18 +175,30 @@ function taskForm(taskTitle, taskDesc)
     container.setAttribute('data-form', '')
     formClasses.forEach((clasa) => form.classList.add(clasa))
     textClasses.forEach((clasa) => text.classList.add(clasa))
+    textREQClasses.forEach((clasa) => {
+        titleText.classList.add(clasa)
+        descText.classList.add(clasa)
+        })
+    titleText.classList.add('lg:left-28')
     inputClasses.forEach((clasa) => input.classList.add(clasa))
+    inputDescClasses.forEach((clasa) => inputDesc.classList.add(clasa))
     submitClasses.forEach((clasa) => submit.classList.add(clasa))
     
     
+    titleText.innerText = 'Title: '
+    descText.innerText = 'Description: '
     text.innerText = "Add a Task to Your Project!"
-    input.placeholder = "Enter Title"
+    input.placeholder = 'Enter Title'
+    inputDesc.placeholder = "Enter Description"
     submit.innerText = "Create"
     
     taskFormSection.appendChild(container)
     container.appendChild(form)
     form.appendChild(text)
+    form.appendChild(titleText)
     form.appendChild(input)
+    form.appendChild(descText)
+    form.appendChild(inputDesc)
     form.appendChild(submit)
     
     submit.addEventListener('click', (event) => {
