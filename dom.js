@@ -135,6 +135,11 @@ function removeProject(event) {
     })
     projects.splice(arrayIndex, 1)
     if (projectIndex !== 0) { projectIndex-- }
+    if (projects.length === 0)
+        {
+            currTab = 1
+            changeTab(currTab)
+        }
     console.log(projects)
 }
 function selectProject(event)
