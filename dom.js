@@ -2,7 +2,8 @@ import { Project, Task, projects } from "./app.js"
 const section = document.querySelector('[data-main-section]')
 
 // Tab Logic
-let currTab = 1;
+let currTab = 1
+changeTab(currTab)
 function changeTab(tab) {
     clearTab(tab)
     switch (tab) {
@@ -56,10 +57,6 @@ function createTaskTab()
     mainContainer.appendChild(taskContainer)
     buttonContainer.appendChild(h1)
     buttonContainer.appendChild(taskAddBtn)
-
-
-
-
 }
 function clearTab() {
 
@@ -68,10 +65,6 @@ function clearTab() {
         section.removeChild(containerBox)
     }
 }
-
-currTab = 2
-changeTab(currTab)
-
 // Project functionality 
 const addBtn = document.querySelector('[data-add-project]')
 const projectFormSection = document.querySelector('[data-form-project-section]')
