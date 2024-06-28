@@ -11,8 +11,10 @@ function changeTab(tab) {
             starTab()
             break;
         case 2:
-            const project = querySelector('.selected')
+            const project = document.querySelector('.selected')
+            console.log(project)
             createTaskTab()
+
             
             break;
         default:
@@ -109,14 +111,30 @@ function createProject(projectIndex, title) {
         button.addEventListener('click', () => removeProject(event))
     })
     container.addEventListener('click', (event) => selectProject(event))
+    currTab = 2
+    const selected = document.querySelector('.selected')
+    if(selected)
+        {
+            selected.classList.remove('selected')
+        }
+    container.classList.add('selected')
+    changeTab(currTab)
     console.log(projects)
 }
 function removeProject(event) {
 
-    const container = event.target.closest('[data-index]')
-    projects.splice(container.dataset.index, 1)
+    const project = event.target.closest('[data-index]')
+    projectSection.removeChild(project)
+    const domIndex = project.dataset.index
+    let arrayIndex
+    projects.find((project) => {
+        if (project.index === domIndex)
+        {
+            arrayIndex = projects.indexOf(project)
+        }
+    })
+    projects.splice(arrayIndex, 1)
     if (projectIndex !== 0) { projectIndex-- }
-    projectSection.removeChild(container)
     console.log(projects)
 }
 function selectProject(event)
@@ -168,7 +186,7 @@ function createProjectForm(index, title) {
         event.preventDefault()
         title = input.value
         if (title) {
-            let project = new Project(title)
+            let project = new Project(title, index)
             projects.push(project)
             console.log(project)
             input.value = ''
