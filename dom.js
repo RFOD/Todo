@@ -8,22 +8,26 @@ function changeTab(tab) {
     clearTab(tab)
     switch (tab) {
         case 1:
-            const containerClasses = ['font-semibold', 'text-[2.5rem]', 'p-5', 'px-10', 'text-white', 'flex', 'flex-col', 'justify-center', 'items-center']
-            const container = document.createElement('div')
-            container.setAttribute('data-container-box', '')
-            containerClasses.forEach((clasa) => container.classList.add(clasa))
-            container.innerText = 'Create a Project to Start!'
-            section.appendChild(container)
+            starTab()
             break;
         case 2:
+            const project = querySelector('.selected')
             createTaskTab()
-            break;
-        case 3:
-
+            
             break;
         default:
+            console.log('The tab is not right for the task, this is the tab: ' + tab)
             break;
     }
+}
+function starTab()
+{
+    const containerClasses = ['font-semibold', 'text-[2.5rem]', 'p-5', 'px-10', 'text-white', 'flex', 'flex-col', 'justify-center', 'items-center']
+    const container = document.createElement('div')
+    container.setAttribute('data-container-box', '')
+    containerClasses.forEach((clasa) => container.classList.add(clasa))
+    container.innerText = 'Select a Project to Start!'
+    section.appendChild(container)
 }
 function createTaskTab()
 {
@@ -59,7 +63,6 @@ function createTaskTab()
     buttonContainer.appendChild(taskAddBtn)
 }
 function clearTab() {
-
     const containerBox = section.querySelector('[data-container-box]')
     if (containerBox) {
         section.removeChild(containerBox)
@@ -78,8 +81,8 @@ function addProject() {
     projectIndex++
 }
 function createProject(projectIndex, title) {
-    const containerClasses = ['duration-200', 'grid', 'grid-cols-[70%_30%]', 'grid-rows-1', 'bg-[#00000020]', 'shadow-md', 'p-2', 'rounded-lg', 'mb-2', 'hover:bg-[#00000030]']
-    const titleClasses = ['font-semibold', 'text-white', 'text-lg', 'ml-2']
+    const containerClasses = ['duration-100', 'grid', 'grid-cols-[70%_30%]', 'grid-rows-1', 'bg-[#00000020]', 'shadow-md', 'p-4', 'rounded-lg', 'mb-2', 'hover:bg-[#00000030]']
+    const titleClasses = ['font-semibold', 'text-white', 'text-xl', 'ml-2']
     const buttonClasses = ['flex', 'justify-center', 'items-center']
     const delBtnClasses = ['duration-100', 'w-36', 'h-8', 'bg-red-700', 'rounded-md', 'text-md', 'text-white', 'flex', 'justify-center', 'items-center', 'hover:opacity-80']
 
@@ -105,6 +108,7 @@ function createProject(projectIndex, title) {
     removeBtns.forEach((button) => {
         button.addEventListener('click', () => removeProject(event))
     })
+    container.addEventListener('click', (event) => selectProject(event))
     console.log(projects)
 }
 function removeProject(event) {
@@ -114,6 +118,17 @@ function removeProject(event) {
     if (projectIndex !== 0) { projectIndex-- }
     projectSection.removeChild(container)
     console.log(projects)
+}
+function selectProject(event)
+{
+    const selected = document.querySelector('.selected')
+    if(selected)
+    {
+        selected.classList.remove('selected')
+    }    
+    const project = event.target.closest('[data-index]')
+    console.log(project)
+    project.classList.add('selected')
 }
 
 function createProjectForm(index, title) {
