@@ -320,10 +320,15 @@ function taskFunctionality(btn, formTaskContainer)
 	}
 	function taskForm(taskTitle, taskDesc) {
 		let currentProject;
-		const domIndex = document.querySelector(".selected").dataset.index;
+		const domProject = document.querySelector(".selected")
+		let domIndex = domProject.dataset.index;
+		domIndex *= 1
+		let index
 		projects.find((project) => {
 			if (project.index === domIndex) {
-				currentProject = project;
+				index = projects.indexOf(project)
+				currentProject = projects[index]
+				console.log(currentProject)
 			}
 		});
 		const containerForm = document.querySelector("[data-form]");
@@ -438,7 +443,7 @@ function taskFunctionality(btn, formTaskContainer)
 		inputDesc.placeholder = "Enter Description";
 		submit.innerText = "Create";
 	
-		taskFormSection.appendChild(container);
+		formTaskContainer.appendChild(container);
 		container.appendChild(form);
 		form.appendChild(text);
 		form.appendChild(titleText);
@@ -448,20 +453,22 @@ function taskFunctionality(btn, formTaskContainer)
 		form.appendChild(submit);
 	
 		submit.addEventListener("click", (event) => {
-			event.preventDefault();
-			const title = input.value;
+			event.preventDefault()
+			const title = input.value
 			if (title) {
+				taskTitle = title
 				let task = new Task(title, taskCounter);
 				taskCounter++;
 				currentProject.tasks.push(task);
-				console.log(task);
+				
 				input.value = "";
 				if (inputDesc.value !== "") {
 					task.description = inputDesc.value;
 					inputDesc.value = "";
 				}
-				projectFormSection.removeChild(container);
-				createProject(index, title);
+				console.log(task);
+				formTaskContainer.removeChild(container);
+				createTask(, title);
 			} else {
 				input.placeholder = "ENTER TITLE!";
 			}
