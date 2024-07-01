@@ -314,20 +314,18 @@ function taskFunctionality(btn, formTaskContainer)
 		console.log(this);
 	});
 	function createTask() {
-		let taskTitle = "";
-		let taskDesc = "";
-		taskForm(taskTitle, taskDesc);
+		taskForm();
 	}
-	function taskForm(taskTitle, taskDesc) {
+	function taskForm() {
 		let currentProject;
 		const domProject = document.querySelector(".selected")
 		let domIndex = domProject.dataset.index;
 		domIndex *= 1
-		let index
+		let projectIndex
 		projects.find((project) => {
 			if (project.index === domIndex) {
-				index = projects.indexOf(project)
-				currentProject = projects[index]
+				projectIndex = projects.indexOf(project)
+				currentProject = projects[projectIndex]
 				console.log(currentProject)
 			}
 		});
@@ -456,7 +454,6 @@ function taskFunctionality(btn, formTaskContainer)
 			event.preventDefault()
 			const title = input.value
 			if (title) {
-				taskTitle = title
 				let task = new Task(title, taskCounter);
 				taskCounter++;
 				currentProject.tasks.push(task);
@@ -468,11 +465,15 @@ function taskFunctionality(btn, formTaskContainer)
 				}
 				console.log(task);
 				formTaskContainer.removeChild(container);
-				createTask(, title);
+				createTask(taskCounter, title);
 			} else {
 				input.placeholder = "ENTER TITLE!";
 			}
 		});
+		function createTask(index, title)
+		{
+			
+		}
 		// Checkbox Fill Logic
 		let checkboxes = document.querySelectorAll("[data-checkbox]");
 		checkboxes.forEach((checkbox) => {
