@@ -585,7 +585,7 @@ function taskFunctionality(btn, formTaskContainer) {
 		function updateTasks()
 		{		
 			// Checkbox Fill Logic
-			let checkboxes = document.querySelectorAll("[data-checkbox]");
+			const checkboxes = document.querySelectorAll("[data-checkbox]");
 			checkboxes.forEach((checkbox) => {
 				checkbox.addEventListener("click", () => toggleCheckboxStatus(checkbox));
 			});
