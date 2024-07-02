@@ -310,7 +310,7 @@ function createProjectForm(index, title) {
 }
 // Task Functionality
 
-
+let taskCounter = 0;
 function taskFunctionality(btn, formTaskContainer) {
 	btn.addEventListener("click", () => {
 		createTask();
@@ -474,6 +474,7 @@ function taskFunctionality(btn, formTaskContainer) {
 			}
 		});
 		function createTask(index, title, desc) {
+			console.log(index)
 			const taskContainer = document.createElement("div");
 			const taskClasses = [
 				"duration-200",
@@ -490,7 +491,7 @@ function taskFunctionality(btn, formTaskContainer) {
 				taskContainer.classList.add(className)
 			);
 			taskContainer.dataset.index = index;
-			taskContainer.dataset.task = true;
+			taskContainer.dataset.task = '';
 
 			const checkbox = document.createElement("div");
 			const checkboxClasses = [
@@ -505,12 +506,12 @@ function taskFunctionality(btn, formTaskContainer) {
 				"ml-4",
 			];
 			checkboxClasses.forEach((className) => checkbox.classList.add(className));
-			checkbox.dataset.checkbox = true;
+			checkbox.dataset.checkbox = '';
 
 			const titleDom = document.createElement("h2");
 			const titleClasses = ["font-semibold", "text-white", "text-xl", "mt-2"];
 			titleClasses.forEach((className) => titleDom.classList.add(className));
-			titleDom.dataset.title = true;
+			titleDom.dataset.title = '';
 			titleDom.textContent = title;
 
 			const buttonDesc = document.createElement("img");
@@ -528,7 +529,7 @@ function taskFunctionality(btn, formTaskContainer) {
 			buttonDescClasses.forEach((className) =>
 				buttonDesc.classList.add(className)
 			);
-			buttonDesc.dataset.buttonDesc = true;
+			buttonDesc.dataset.buttonDesc = '';
 			buttonDesc.alt = "arrow down";
 			buttonDesc.src = "src/Images/arrow_down.webp";
 
@@ -544,7 +545,7 @@ function taskFunctionality(btn, formTaskContainer) {
 			descriptionClasses.forEach((className) =>
 				description.classList.add(className)
 			);
-			description.dataset.desc = true;
+			description.dataset.desc = '';
 			description.textContent = desc;
 
 			const deleteButton = document.createElement("div");
@@ -567,7 +568,7 @@ function taskFunctionality(btn, formTaskContainer) {
 			deleteButtonClasses.forEach((className) =>
 				deleteButton.classList.add(className)
 			);
-			deleteButton.dataset.deleteTask = true;
+			deleteButton.dataset.deleteTask = '';
 			deleteButton.textContent = "Delete";
 
 			// Append all elements to the parent container
@@ -579,7 +580,7 @@ function taskFunctionality(btn, formTaskContainer) {
 			taskSection.appendChild(taskContainer);
 			updateTasks()
 		}
-		let taskCounter = 0;
+		
 
 		function updateTasks()
 		{		
@@ -601,18 +602,16 @@ function taskFunctionality(btn, formTaskContainer) {
 			
 			let tasks = document.querySelectorAll("[data-task]");
 			tasks.forEach((task) =>
-				task.addEventListener("click", () => toggleDescription(event))
+				task.querySelector('[data-button-desc]').addEventListener("click", (event) => toggleDescription(event))
 			);
 			function toggleDescription(event) {
 				const button = event.target.closest("[data-button-desc]");
-				if (button) {
-					const description = button.nextSibling.nextSibling;
-					const deleteBtn = description.nextSibling.nextSibling;
+					const description = button.nextSibling;
+					const deleteBtn = description.nextSibling;
 					if (deleteBtn && description) {
 						description.classList.toggle("hidden");
 						deleteBtn.classList.toggle("hidden");
 					}
-				}
 			}
 		}
 	}
