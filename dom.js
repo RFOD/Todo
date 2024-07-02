@@ -1,3 +1,4 @@
+
 import { Project, Task, projects } from "./app.js";
 const section = document.querySelector("[data-main-section]");
 
@@ -11,8 +12,7 @@ function changeTab(tab) {
 			starTab();
 			break;
 		case 2:
-			
-			let addbtn
+			let addbtn;
 			const project = document.querySelector(".selected");
 			const domIndex = project.dataset.index;
 			projects.find((project) => {
@@ -24,13 +24,15 @@ function changeTab(tab) {
 			});
 			addbtn = createTaskTab();
 			const formTaskContainer = document.querySelector("[data-task-form-section]");
-			taskFunctionality(addbtn, formTaskContainer)
+			taskSection = document.querySelector('[data-task-section]')
+			taskFunctionality(addbtn, formTaskContainer);
 			break;
 		default:
 			console.log("The tab is not right for the task, this is the tab: " + tab);
 			break;
 	}
 }
+let taskSection
 function starTab() {
 	const containerClasses = [
 		"font-semibold",
@@ -45,7 +47,7 @@ function starTab() {
 	];
 	const container = document.createElement("div");
 	container.setAttribute("data-container-box", "");
-	containerClasses.forEach((clasa) => container.classList.add(clasa));
+	containerClasses.forEach((clasa) => container.classList.add(clasa)); 
 	container.innerText = "Select a Project to Start!";
 	section.appendChild(container);
 }
@@ -102,7 +104,7 @@ function createTaskTab() {
 	mainContainer.appendChild(taskContainer);
 	buttonContainer.appendChild(h1);
 	buttonContainer.appendChild(taskAddBtn);
-	return taskAddBtn
+	return taskAddBtn;
 }
 function clearTab() {
 	const containerBox = section.querySelector("[data-container-box]");
@@ -307,8 +309,9 @@ function createProjectForm(index, title) {
 	});
 }
 // Task Functionality
-function taskFunctionality(btn, formTaskContainer)
-{
+
+
+function taskFunctionality(btn, formTaskContainer) {
 	btn.addEventListener("click", () => {
 		createTask();
 		console.log(this);
@@ -318,15 +321,15 @@ function taskFunctionality(btn, formTaskContainer)
 	}
 	function taskForm() {
 		let currentProject;
-		const domProject = document.querySelector(".selected")
+		const domProject = document.querySelector(".selected");
 		let domIndex = domProject.dataset.index;
-		domIndex *= 1
-		let projectIndex
+		domIndex *= 1;
+		let projectIndex;
 		projects.find((project) => {
 			if (project.index === domIndex) {
-				projectIndex = projects.indexOf(project)
-				currentProject = projects[projectIndex]
-				console.log(currentProject)
+				projectIndex = projects.indexOf(project);
+				currentProject = projects[projectIndex];
+				console.log(currentProject);
 			}
 		});
 		const containerForm = document.querySelector("[data-form]");
@@ -411,7 +414,7 @@ function taskFunctionality(btn, formTaskContainer)
 			"rounded",
 			"shadow-lg",
 		];
-	
+
 		let container = document.createElement("div");
 		let form = document.createElement("form");
 		let text = document.createElement("p");
@@ -420,7 +423,7 @@ function taskFunctionality(btn, formTaskContainer)
 		let inputDesc = document.createElement("textarea");
 		let input = document.createElement("input");
 		let submit = document.createElement("button");
-	
+
 		containerClasses.forEach((clasa) => container.classList.add(clasa));
 		container.setAttribute("data-form", "");
 		formClasses.forEach((clasa) => form.classList.add(clasa));
@@ -433,14 +436,14 @@ function taskFunctionality(btn, formTaskContainer)
 		inputClasses.forEach((clasa) => input.classList.add(clasa));
 		inputDescClasses.forEach((clasa) => inputDesc.classList.add(clasa));
 		submitClasses.forEach((clasa) => submit.classList.add(clasa));
-	
+
 		titleText.innerText = "Title: ";
 		descText.innerText = "Description: ";
 		text.innerText = "Add a Task to Your Project!";
 		input.placeholder = "Enter Title";
 		inputDesc.placeholder = "Enter Description";
 		submit.innerText = "Create";
-	
+
 		formTaskContainer.appendChild(container);
 		container.appendChild(form);
 		form.appendChild(text);
@@ -449,15 +452,15 @@ function taskFunctionality(btn, formTaskContainer)
 		form.appendChild(descText);
 		form.appendChild(inputDesc);
 		form.appendChild(submit);
-	
+
 		submit.addEventListener("click", (event) => {
-			event.preventDefault()
-			const title = input.value
+			event.preventDefault();
+			const title = input.value;
 			if (title) {
 				let task = new Task(title, taskCounter);
 				taskCounter++;
 				currentProject.tasks.push(task);
-				
+
 				input.value = "";
 				if (inputDesc.value !== "") {
 					task.description = inputDesc.value;
@@ -465,43 +468,150 @@ function taskFunctionality(btn, formTaskContainer)
 				}
 				console.log(task);
 				formTaskContainer.removeChild(container);
-				createTask(taskCounter, title);
+				createTask(taskCounter, title, task.description);
 			} else {
 				input.placeholder = "ENTER TITLE!";
 			}
 		});
-		function createTask(index, title)
-		{
-			
+		function createTask(index, title, desc) {
+			const taskContainer = document.createElement("div");
+			const taskClasses = [
+				"duration-200",
+				"shadow-md",
+				"grid",
+				"grid-cols-[10%_80%_10%]",
+				"bg-[#00000020]",
+				"p-2",
+				"rounded-lg",
+				"mb-2",
+			];
+
+			taskClasses.forEach((className) =>
+				taskContainer.classList.add(className)
+			);
+			taskContainer.dataset.index = index;
+			taskContainer.dataset.task = true;
+
+			const checkbox = document.createElement("div");
+			const checkboxClasses = [
+				"w-[1.7rem]",
+				"h-[1.7rem]",
+				"mt-2",
+				"border-2",
+				"border-white",
+				"rounded-[50%]",
+				"relative",
+				"right-2",
+				"ml-4",
+			];
+			checkboxClasses.forEach((className) => checkbox.classList.add(className));
+			checkbox.dataset.checkbox = true;
+
+			const titleDom = document.createElement("h2");
+			const titleClasses = ["font-semibold", "text-white", "text-xl", "mt-2"];
+			titleClasses.forEach((className) => titleDom.classList.add(className));
+			titleDom.dataset.title = true;
+			titleDom.textContent = title;
+
+			const buttonDesc = document.createElement("img");
+			const buttonDescClasses = [
+				"w-[2.5rem]",
+				"h-[2.8rem]",
+				"pt-[4px]",
+				"rounded-[50%]",
+				"relative",
+				"right-2",
+				"ml-4",
+				"hover:shadow-lg",
+				"hover:opacity-20",
+			];
+			buttonDescClasses.forEach((className) =>
+				buttonDesc.classList.add(className)
+			);
+			buttonDesc.dataset.buttonDesc = true;
+			buttonDesc.alt = "arrow down";
+			buttonDesc.src = "src/Images/arrow_down.webp";
+
+			const description = document.createElement("div");
+			const descriptionClasses = [
+				"text-base",
+				"font-normal",
+				"m-2",
+				"mt-4",
+				"col-span-3",
+				"hidden",
+			];
+			descriptionClasses.forEach((className) =>
+				description.classList.add(className)
+			);
+			description.dataset.desc = true;
+			description.textContent = desc;
+
+			const deleteButton = document.createElement("div");
+			const deleteButtonClasses = [
+				"hidden",
+				"col-start-3",
+				"duration-100",
+				"w-24",
+				"relative",
+				"right-[100%]",
+				"h-8",
+				"bg-red-700",
+				"rounded-md",
+				"text-lg",
+				"flex",
+				"justify-center",
+				"items-center",
+				"hover:opacity-80",
+			];
+			deleteButtonClasses.forEach((className) =>
+				deleteButton.classList.add(className)
+			);
+			deleteButton.dataset.deleteTask = true;
+			deleteButton.textContent = "Delete";
+
+			// Append all elements to the parent container
+			taskContainer.appendChild(checkbox);
+			taskContainer.appendChild(titleDom);
+			taskContainer.appendChild(buttonDesc);
+			taskContainer.appendChild(description);
+			taskContainer.appendChild(deleteButton);
+			taskSection.appendChild(taskContainer);
+			updateTasks()
 		}
-		// Checkbox Fill Logic
-		let checkboxes = document.querySelectorAll("[data-checkbox]");
-		checkboxes.forEach((checkbox) => {
-			checkbox.addEventListener("click", () => toggleCheckboxStatus(checkbox));
-		});
-		function toggleCheckboxStatus(checkbox) {
-			if (checkbox.classList.contains("bg-white")) {
-				checkbox.closest("[data-index]").classList.remove(`order-last`);
-				checkbox.classList.toggle("bg-white");
-				return;
-			}
-			checkbox.classList.toggle("bg-white");
-			checkbox.closest("[data-index]").classList.add(`order-last`);
-		}
-	
 		let taskCounter = 0;
-		let tasks = document.querySelectorAll("[data-task]");
-		tasks.forEach((task) =>
-			task.addEventListener("click", () => toggleDescription(event))
-		);
-		function toggleDescription(event) {
-			const button = event.target.closest("[data-button-desc]");
-			if (button) {
-				const description = button.nextSibling.nextSibling;
-				const deleteBtn = description.nextSibling.nextSibling;
-				if (deleteBtn && description) {
-					description.classList.toggle("hidden");
-					deleteBtn.classList.toggle("hidden");
+
+		function updateTasks()
+		{		
+			// Checkbox Fill Logic
+			let checkboxes = document.querySelectorAll("[data-checkbox]");
+			checkboxes.forEach((checkbox) => {
+				checkbox.addEventListener("click", () => toggleCheckboxStatus(checkbox));
+			});
+			function toggleCheckboxStatus(checkbox) {
+				if (checkbox.classList.contains("bg-white")) {
+					checkbox.closest("[data-index]").classList.remove(`order-last`);
+					checkbox.classList.toggle("bg-white");
+					return;
+				}
+				checkbox.classList.toggle("bg-white");
+				checkbox.closest("[data-index]").classList.add(`order-last`);
+			}
+	
+			
+			let tasks = document.querySelectorAll("[data-task]");
+			tasks.forEach((task) =>
+				task.addEventListener("click", () => toggleDescription(event))
+			);
+			function toggleDescription(event) {
+				const button = event.target.closest("[data-button-desc]");
+				if (button) {
+					const description = button.nextSibling.nextSibling;
+					const deleteBtn = description.nextSibling.nextSibling;
+					if (deleteBtn && description) {
+						description.classList.toggle("hidden");
+						deleteBtn.classList.toggle("hidden");
+					}
 				}
 			}
 		}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/output.css">
+    <title>Test</title>
+</head>
+<body class="bg-red-700">
+    <div data-container-box class="font-bold text-[2rem] text-white p-5 px-10 flex flex-col">
+        <div class="flex gap-2 items-center mb-2">
+            <h1 class="mr-6">Tasks</h1>
+            <div data-task-add class="duration-100 w-32 h-10 bg-green-600 rounded-md text-xl flex justify-center items-center hover:opacity-80">Add Task</div>
+        </div>
+        <hr class="mb-6">
+        <div data-task-form-section></div>
+        <div data-task-section>
+            <div data-index data-task class="duration-200 shadow-md grid grid-cols-[10%_80%_10%] bg-[#00000020] p-2 rounded-lg mb-2 ">
+                <div data-checkbox class="w-[1.7rem] h-[1.7rem] mt-2 border-2 border-white rounded-[50%] relative right-2 ml-4 "></div>
+                <h2 class="font-semibold text-white text-xl mt-2" data-title>Create page using tailwind Css</h2>
+                <img data-button-desc alt="arrow down" src="src/Images/arrow_down.webp" class="w-[2.5rem] h-[2.8rem] pt-[4px] rounded-[50%] relative right-2 ml-4 hover:shadow-lg hover:opacity-20">
+                <div data-desc class="text-base font-normal m-2 mt-4 col-span-3 hidden">
+                    Optio ipsa dolores non placeat tempora porro nobis. Possimus, reprehenerit nobis hic, eveniet accusantium tempore corporis minus eum voluptatum perferendis recusandae?
+                </div>
+                <div data-delete-task class="hidden col-start-3 duration-100 w-24 relative right-[100%] h-8 bg-red-700 rounded-md text-lg flex justify-center items-center hover:opacity-80">Delete</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
